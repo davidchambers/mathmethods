@@ -3,12 +3,13 @@
   function defineProperty(name) {
     var
       method = Math[name],
+      random = name == "random",
       invoke = !/^(atan2|max|min|pow)$/.test(name)
 
     Object.defineProperty(Number.prototype, name, {
       get: function () {
         var self = this
-        return invoke ? method(this) : function () {
+        return random ? this * method() : invoke ? method(this) : function () {
           var args = Array.prototype.slice.call(arguments)
           args.unshift(self)
           return method.apply(Math, args)

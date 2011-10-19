@@ -33,14 +33,31 @@ fee = 0..max(rate * hours - advance)      fee = Math.max(0, rate * hours - advan
 kim.wage = 10..min(ian.wage, jan.wage)    kim.wage = Math.min(10, ian.wage, jan.wage)
 ```
 
+### `random`
+
+[`Math.random`][2] takes *zero* arguments. For consistency with the other
+methods, `Number.prototype.random` produces a number between 0 and `this`.
+`100..random`, for example, produces a number between 0 and 100.
+
+```javascript
+// generate a number between 0 and 1 (inclusive of 0, exclusive of 1)
+
+1..random                                 Math.random()
+
+// simluate a die roll
+
+6..random.floor + 1                       Math.floor(6 * Math.random()) + 1
+```
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ### Cautionary note
 
-There are lots of reasons not to use this code: [`Object.defineProperty`][2]
+There are lots of reasons not to use this code: [`Object.defineProperty`][3]
 is not universally supported, using "getters" in JavaScript is not idiomatic,
 and code written in this fashion is somewhat more difficult to comprehend.
 
 
 [1]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Math
-[2]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/defineProperty
+[2]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Math/random
+[3]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/defineProperty

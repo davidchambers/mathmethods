@@ -85,9 +85,9 @@ var
   41, assertNaN(1..pow(Infinity))
 
 "random"
-  42, assert(0..random >= 0)
-  43, assert(0..random < 1)
-  44, assert(Infinity.random < 1)
+  42, assert(0..random === 0)
+  43, assert(100..random < 100)
+  44, assert((-5).random <= 0)
 
 "round"
   45, assertEqual(20.49.round, 20)
