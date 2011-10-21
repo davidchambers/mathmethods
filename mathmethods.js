@@ -1,31 +1,27 @@
-(function (Object, Math) {
+(function (Object, Math, numberProto, slice) {
 
-  function defineProperty(name) {
-    var
-      method = Math[name],
-      random = name == "random",
-      invoke = !/^(atan2|max|min|pow)$/.test(name)
-
-    Object.defineProperty(Number.prototype, name, {
-      get: function () {
-        var self = this
-        return random ? this * method() : invoke ? method(this) : function () {
-          var args = Array.prototype.slice.call(arguments)
-          args.unshift(self)
-          return method.apply(Math, args)
-        }
-      }
-    })
-  }
-
-  var
-    names = Object.getOwnPropertyNames(Math),
-    i = names.length
-
-  while (i--) {
-    if (typeof Math[names[i]] == "function") {
-      defineProperty(names[i])
+  function addMethod(name, fn) {
+    numberProto[name] = function () {
+      return fn.apply(Math, [this].concat(slice.call(arguments)))
     }
   }
 
-}(Object, Math));
+  function defineProperty(name, fn) {
+    Object.defineProperty(numberProto, name, {
+      get: name == "random" ?
+        function(){ return this * fn() } :
+        function(){ return fn(this) }
+    })
+  }
+
+  var names = Object.getOwnPropertyNames(Math), idx = names.length
+
+  while (idx--) {
+    var name = names[idx], fn = Math[name]
+    if (typeof fn == "function") {
+      if (/^(atan2|max|min|pow)$/.test(name)) addMethod(name, fn)
+      else                                    defineProperty(name, fn)
+    }
+  }
+
+}(Object, Math, Number.prototype, Array.prototype.slice));
