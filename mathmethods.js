@@ -1,6 +1,7 @@
 (function() {
-  var addGetter, addMethod, defineProperty, fn, getters, methods, name, _i, _j, _len, _len2;
+  var addGetter, addMethod, defineProperty, fn, getters, methods, name, numberProto, _i, _j, _len, _len2;
   var __slice = Array.prototype.slice;
+  numberProto = Number.prototype;
   defineProperty = Object.defineProperty;
   if (defineProperty == null) {
     defineProperty = function(object, name, descriptor) {
@@ -14,7 +15,7 @@
     } : function() {
       return fn(this);
     };
-    return defineProperty(Number.prototype, name, {
+    return defineProperty(numberProto, name, {
       get: get
     });
   };
@@ -27,6 +28,16 @@
   };
   getters = ['abs', 'acos', 'asin', 'atan', 'ceil', 'cos', 'exp', 'floor', 'log', 'random', 'round', 'sin', 'sqrt', 'tan'];
   methods = ['atan2', 'max', 'min', 'pow'];
+  defineProperty(numberProto, 'squared', {
+    get: function() {
+      return this.pow(2);
+    }
+  });
+  defineProperty(numberProto, 'cubed', {
+    get: function() {
+      return this.pow(3);
+    }
+  });
   for (_i = 0, _len = getters.length; _i < _len; _i++) {
     name = getters[_i];
     if (typeof (fn = Math[name]) === 'function') {

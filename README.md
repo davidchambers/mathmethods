@@ -49,6 +49,18 @@ methods, `Number.prototype.random` produces a number between 0 and `this`.
 6..random.floor + 1                       Math.floor(6 * Math.random()) + 1
 ```
 
+### `squared` and `cubed`
+
+Shorthands for the equivalent `.pow`s.
+
+```javascript
+// with mathmethods                       // without
+
+area = width.squared                      area = Math.pow(width, 2)
+
+volume = x.cubed                          volume = Math.pow(x, 3)
+```
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ### Cautionary note

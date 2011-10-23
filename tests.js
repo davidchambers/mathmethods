@@ -112,6 +112,17 @@ var
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+"squared"
+  58, assertEqual(8..squared, 64)
+  59, assertEqual(1.5.squared, 2.25)
+  60, assertEqual((-7).squared, 49)
+
+"cubed"
+  61, assertEqual(3..cubed, 27)
+  62, assertEqual((-1.5).cubed, -3.375)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 console.log((count - fails.length) + ' of ' + count + ' tests passed')
 
 if (fails.length) console.log('failed: ' + fails.join(', '))

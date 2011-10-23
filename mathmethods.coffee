@@ -1,3 +1,5 @@
+numberProto = Number.prototype
+
 {defineProperty} = Object
 unless defineProperty?
   defineProperty = (object, name, descriptor) ->
@@ -5,7 +7,7 @@ unless defineProperty?
 
 addGetter = (name, fn) ->
   get = if name is 'random' then -> this * fn() else -> fn this
-  defineProperty Number.prototype, name, {get}
+  defineProperty numberProto, name, {get}
 
 addMethod = (name, fn) ->
   Number::[name] = (args...) -> fn.apply Math, [this].concat args
@@ -33,6 +35,9 @@ methods = [
   'min'
   'pow'
 ]
+
+defineProperty numberProto, 'squared', get: -> @pow 2
+defineProperty numberProto, 'cubed', get: -> @pow 3
 
 for name in getters
   addGetter name, fn if typeof (fn = Math[name]) is 'function'
