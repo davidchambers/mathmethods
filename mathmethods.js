@@ -1,13 +1,17 @@
 (function() {
   var addGetter, addMethod, defineProperty, fn, getters, methods, name, numberProto, _i, _j, _len, _len2;
   var __slice = Array.prototype.slice;
+
   numberProto = Number.prototype;
+
   defineProperty = Object.defineProperty;
+
   if (defineProperty == null) {
     defineProperty = function(object, name, descriptor) {
       return object.__defineGetter__(name, descriptor.get);
     };
   }
+
   addGetter = function(name, fn) {
     var get;
     get = name === 'random' ? function() {
@@ -19,6 +23,7 @@
       get: get
     });
   };
+
   addMethod = function(name, fn) {
     return Number.prototype[name] = function() {
       var args;
@@ -26,28 +31,31 @@
       return fn.apply(Math, [this].concat(args));
     };
   };
+
   getters = ['abs', 'acos', 'asin', 'atan', 'ceil', 'cos', 'exp', 'floor', 'log', 'random', 'round', 'sin', 'sqrt', 'tan'];
+
   methods = ['atan2', 'max', 'min', 'pow'];
+
   defineProperty(numberProto, 'squared', {
     get: function() {
       return this.pow(2);
     }
   });
+
   defineProperty(numberProto, 'cubed', {
     get: function() {
       return this.pow(3);
     }
   });
+
   for (_i = 0, _len = getters.length; _i < _len; _i++) {
     name = getters[_i];
-    if (typeof (fn = Math[name]) === 'function') {
-      addGetter(name, fn);
-    }
+    if (typeof (fn = Math[name]) === 'function') addGetter(name, fn);
   }
+
   for (_j = 0, _len2 = methods.length; _j < _len2; _j++) {
     name = methods[_j];
-    if (typeof (fn = Math[name]) === 'function') {
-      addMethod(name, fn);
-    }
+    if (typeof (fn = Math[name]) === 'function') addMethod(name, fn);
   }
+
 }).call(this);
