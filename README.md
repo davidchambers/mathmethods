@@ -61,6 +61,11 @@ area = width.squared                      area = Math.pow(width, 2)
 volume = x.cubed                          volume = Math.pow(x, 3)
 ```
 
+### Running the test suite
+
+    npm install
+    npm test
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ### Internet Explorer

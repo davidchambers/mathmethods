@@ -1,0 +1,18 @@
+{
+  "name": "mathmethods",
+  "version": "0.1.0",
+  "description": "Adds Math methods to Number.prototype as callable properties",
+  "author": "David Chambers <dc@hashify.me>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidchambers/mathmethods"
+  },
+  "bugs": "https://github.com/davidchambers/mathmethods/issues",
+  "devDependencies": {
+    "coffee-script": "1.2.x",
+    "jessie": "0.4.x"
+  },
+  "scripts": {
+    "test": "node_modules/jessie/bin/jessie spec"
+  }
+}
