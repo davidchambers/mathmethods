@@ -1,5 +1,7 @@
 # mathmethods
 
+    npm install mathmethods
+
 mathmethods is a tiny script which makes methods of the [`Math`][1] object
 available to numbers by adding properties to `Number.prototype`. This makes it
 possible to write certain expressions in a more expressive (Ruby-like) manner.
