@@ -7,7 +7,7 @@
   "main": "./lib/mathmethods",
   "repository": {
     "type": "git",
-    "url": "https://github.com/davidchambers/mathmethods"
+    "url": "git://github.com/davidchambers/mathmethods.git"
   },
   "bugs": "https://github.com/davidchambers/mathmethods/issues",
   "devDependencies": {
