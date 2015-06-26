@@ -63,6 +63,20 @@ a TypeError if the number is not an integer.
 5..fact                                   // 5 * 4 * 3 * 2 * 1
 ```
 
+### `radiusToArea`
+Gives the area of a circle that has the number as the radius.
+
+```javascript
+var circleArea = 12.radiusToArea                    // var circleArea = (Math.pow(12)) * Math.PI
+```
+
+### `diameterToCircumference`
+Gives the circumference of a circle that has the number is the diameter.
+
+```javascript
+var circumference = 12.diameterToCircumference      // var circumference = (Math.PI * 12)
+```
+
 ### Running the test suite
 
     make setup
